@@ -1,0 +1,29 @@
+name: Code Review Bot
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send Pull Request Event to Backend
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl -X POST "https://codegen-r62f.onrender.com/webhook" \
+               -H "Content-Type: application/json" \
+               -H "Authorization: Bearer $GITHUB_TOKEN" \
+               -d '{
+                     "repository": {
+                       "owner": { "login": "${{ github.repository_owner }}" },
+                       "name": "${{ github.event.repository.name }}"
+                     },
+                     "pull_request": {
+                       "number": ${{ github.event.pull_request.number }},
+                       "diff_url": "${{ github.event.pull_request.diff_url }}"
+                     },
+                     "action": "${{ github.event.action }}"
+                   }'
