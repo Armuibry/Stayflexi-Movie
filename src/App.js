@@ -13,8 +13,8 @@ function App() {
         <Route exact path="search" element={<search />} />
         <Route exact path="comment" element={<comment />} />
         <Route exact path="approval" element={<approval />} />
-        <Route exact path="analytics" element={<analytics />} />
-        <Route exact path="repository" element={<repository />} />
+        {/* <Route exact path="analytics" element={<analytics />} />
+        <Route exact path="repository" element={<repository />} /> */}
       </Routes>
     </div>
   );
