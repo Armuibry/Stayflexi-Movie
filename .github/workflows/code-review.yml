@@ -7,13 +7,25 @@ on:
 jobs:
   review:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
+      - name: Debug GitHub Token Before Request
+        run: |
+          echo "Checking GITHUB_TOKEN..."
+          if [ -z "$GITHUB_TOKEN" ]; then
+            echo "❌ ERROR: GITHUB_TOKEN is missing!"
+            exit 1
+          else
+            echo "✅ GITHUB_TOKEN is available."
+          fi
+
       - name: Send PR Event to Backend
         run: |
           curl -X POST "https://codegen-r62f.onrender.com/webhook" \
                -H "Content-Type: application/json" \
-               -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+               -H "Authorization: Bearer $GITHUB_TOKEN" \
                -H "x-github-event: pull_request" \
                -d '{
                      "repository": {
