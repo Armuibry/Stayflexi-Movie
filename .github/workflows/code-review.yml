@@ -13,8 +13,8 @@ jobs:
         run: |
           curl -X POST "https://codegen-r62f.onrender.com/webhook" \
                -H "Content-Type: application/json" \
-               -H "x-github-event: pull_request" \
                -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+               -H "x-github-event: pull_request" \
                -d '{
                      "repository": {
                        "owner": { "login": "${{ github.repository_owner }}" },
