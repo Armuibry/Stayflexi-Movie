@@ -8,15 +8,12 @@ jobs:
   review:
     runs-on: ubuntu-latest
 
-    # Pos 1: Checkout the code
     steps:
-      - name: Send Pull Request Event to Backend
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Send PR Event to Backend
         run: |
           curl -X POST "https://codegen-r62f.onrender.com/webhook" \
                -H "Content-Type: application/json" \
-               -H "Authorization: Bearer $GITHUB_TOKEN" \
+               -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
                -d '{
                      "repository": {
                        "owner": { "login": "${{ github.repository_owner }}" },
