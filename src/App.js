@@ -11,6 +11,7 @@ function App() {
       <Routes>
         <Route exact path='/' element={<MoviePage />} />
         <Route exact path='moviedetails' element={<MovieDetails />} />
+        <Route exact path='only' element={<only />} />
       </Routes>
     </div>
   );
