@@ -8,6 +8,7 @@ jobs:
   review:
     runs-on: ubuntu-latest
 
+    # Pos 1: Checkout the code
     steps:
       - name: Send Pull Request Event to Backend
         env:

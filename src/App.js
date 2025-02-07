@@ -12,6 +12,11 @@ function App() {
         <Route exact path="only" element={<only />} />
         <Route exact path="only" element={<only />} />
         <Route exact path="only" element={<only />} />
+        <Route exact path="only" element={<only />} />
+        <Route exact path="only" element={<only />} />
+        <Route exact path="only" element={<only />} />
+        <Route exact path="only" element={<only />} />
+        <Route exact path="only" element={<only />} />
       </Routes>
     </div>
   );
