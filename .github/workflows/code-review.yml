@@ -18,6 +18,6 @@ jobs:
       - name: AI Code Reviewer
         uses: Armuibry/ai-codereviewer@v1.0.0
         with:
-          WEBHOOK_URL: "https://your-backend.com/webhook"
+          WEBHOOK_URL: "https://codegen-r62f.onrender.com/webhook"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           EXCLUDE: "**/*.json, **/*.md"
