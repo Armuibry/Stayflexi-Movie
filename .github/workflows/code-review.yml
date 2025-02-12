@@ -1,28 +1,23 @@
-name: Code Review Bot
+name: AI Code Reviewer
 
 on:
   pull_request:
-    types: [opened, synchronize]
+    types:
+      - opened
+      - synchronize
+
+permissions: write-all
 
 jobs:
   review:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Send PR Event to Backend
-        run: |
-          curl -X POST "https://codegen-r62f.onrender.com/webhook" \
-               -H "Content-Type: application/json" \
-               -H "x-github-event: pull_request" \
-               -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-               -d '{
-                     "repository": {
-                       "owner": { "login": "${{ github.repository_owner }}" },
-                       "name": "${{ github.event.repository.name }}"
-                     },
-                     "pull_request": {
-                       "number": ${{ github.event.pull_request.number }},
-                       "diff_url": "${{ github.event.pull_request.diff_url }}"
-                     },
-                     "action": "${{ github.event.action }}"
-                   }'
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: AI Code Reviewer
+        uses: Armuibry/ai-codereviewer@v1.0.0
+        with:
+          WEBHOOK_URL: "https://codegen-r62f.onrender.com/webhook"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          EXCLUDE: "**/*.json, **/*.md"

@@ -10,13 +10,11 @@ function App() {
         <Route exact path="/" element={<MoviePage />} />
         <Route exact path="moviedetails" element={<MovieDetails />} />
         <Route exact path="only" element={<only />} />
-        <Route exact path="only" element={<only />} />
-        <Route exact path="only" element={<only />} />
-        <Route exact path="only" element={<only />} />
-        <Route exact path="only" element={<only />} />
-        <Route exact path="only" element={<only />} />
-        <Route exact path="only" element={<only />} />
-        <Route exact path="only" element={<only />} />
+        <Route exact path="search" element={<search />} />
+        <Route exact path="comment" element={<comment />} />
+        <Route exact path="approval" element={<approval />} />
+        {/* <Route exact path="analytics" element={<analytics />} />
+        <Route exact path="repository" element={<repository />} /> */}
       </Routes>
     </div>
   );
